@@ -1,21 +1,44 @@
-# bun-react-template
+# Impress — marketing website
 
-To install dependencies:
+Static, mobile-first landing site for the Impress app, built with React, React Router, Tailwind CSS v4 and Lucide icons, bundled and served by [Bun](https://bun.com).
 
-```bash
-bun install
-```
-
-To start a development server:
+## Scripts
 
 ```bash
-bun dev
+bun install        # install dependencies
+bun dev            # dev server with hot reload at http://localhost:3000
+bun run build      # static production build → dist/
+bun start          # serve the app in production mode with Bun
+bun run typecheck  # TypeScript check
 ```
 
-To run for production:
+Every route is handled client-side: `/`, the home-page sections (`/explore`, `/features`, `/why-impress`, `/how-it-works`, `/faq`, `/download`), and the legal pages (`/terms-and-conditions`, `/privacy-policy`, `/refund-policy`, each with optional section paths such as `/terms-and-conditions/eligibility`). No links use `#`. The Bun server already falls back to the app for any path. If you deploy `dist/` to a static host, configure it to serve `index.html` for unknown paths so deep links and refreshes work.
 
-```bash
-bun start
+## Before launch
+
+- **Links and business details** are all in [`src/config.ts`](src/config.ts): store URLs, social links, company legal name, address, support email and jurisdiction. Every page reads from this file.
+- **Legal pages** contain highlighted placeholders such as `[Company Legal Name]` and `[Confirm refund processing timeline]`. Replace them with confirmed details and have the documents reviewed by a legal professional.
+- **Testimonials** in `src/pages/home/Testimonials.tsx` are labelled as samples. Swap in real, consented quotes.
+- **FAQ → "Is Impress free?"** has a pricing placeholder.
+- **Hero photos**: the gentleman in the back phone is a photo you supplied (confirm you hold a licence for it), the couple beside the front phone is a free Pexels stock photo, and the 3D heart comes from Microsoft Fluent Emoji. Sources and licences are in [`src/assets/CREDITS.md`](src/assets/CREDITS.md). Swap in photos you hold model releases for before launch.
+- **Images**: the screenshots and logo in `src/assets/` are low-resolution exports (around 360px wide). Replace them with 2x or 3x exports under the same filenames for sharper rendering, and update the dimensions in `src/assets/index.ts`.
+- **SEO**: add `og:url` and `og:image` in `src/index.html` once the production domain is known.
+
+## Structure
+
+```
+src/
+  config.ts              links, social, company placeholders, nav items
+  index.css              design tokens (colors sampled from the app), utilities
+  assets/                logo, app screenshots, favicon (+ index.ts registry)
+  components/            Navbar, MobileMenu, Footer, Button, PhoneMockup,
+                         SectionHeading, FeatureCard, BenefitCard, StepCard,
+                         TestimonialCard, FAQAccordion, GradientBackground,
+                         LegalLayout, Reveal, Layout, Logo, SocialIcons
+  hooks/                 usePageMeta (title/description), useReveal (scroll fade-in)
+  pages/
+    Home.tsx             composes the sections in pages/home/
+    TermsAndConditions.tsx, PrivacyPolicy.tsx, RefundPolicy.tsx, NotFound.tsx
 ```
 
-This project was created using `bun init` in bun v1.4.0. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+Animations are CSS-only and switch off under `prefers-reduced-motion`.

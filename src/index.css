@@ -1,187 +1,324 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-}
-body {
-  margin: 0;
-  display: grid;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  position: relative;
-}
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  opacity: 0.05;
-  background: url("./logo.svg");
-  background-size: 256px;
-  transform: rotate(-12deg) scale(1.35);
-  animation: slide 30s linear infinite;
-  pointer-events: none;
-}
-@keyframes slide {
-  from {
-    background-position: 0 0;
+@import "tailwindcss";
+
+/*
+ * Impress design tokens — sampled from the app's splash screen, wordmark and
+ * topic-picker screen. Exposed both as Tailwind theme colors (bg-pink, text-navy…)
+ * and as plain CSS variables (--color-pink…).
+ */
+@theme {
+  --color-navy: #001c64; /* headings, from app headline */
+  --color-ink: #1f2547; /* body text */
+  --color-muted: #5b6080; /* secondary text */
+  --color-plum: #792f8f; /* wordmark start */
+  --color-magenta: #c7256b; /* wordmark middle */
+  --color-coral: #fc4d5c; /* wordmark end */
+  --color-purple: #b864c3; /* progress bar start */
+  --color-pink: #e86c8e; /* progress bar end, check badges */
+  --color-blush: #f6cedb; /* splash top glow */
+  --color-lilac: #ded0fc; /* splash center glow */
+  --color-lavender: #f2f3ff; /* unselected card background */
+  --color-background: #f8faff; /* app page background */
+  --color-line: #e6e8f5;
+  --color-gold: #96601f; /* splash tagline (#a66a2c), darkened for contrast */
+
+  --color-primary: var(--color-magenta);
+  --color-secondary: var(--color-purple);
+
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(0 28 100 / 0.04), 0 8px 24px -8px rgb(0 28 100 / 0.1);
+  --shadow-card-hover: 0 2px 4px rgb(0 28 100 / 0.05), 0 18px 40px -12px rgb(121 47 143 / 0.22);
+  --shadow-phone: 0 40px 80px -24px rgb(56 20 90 / 0.35), 0 12px 24px -8px rgb(0 28 100 / 0.18);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
-  to {
-    background-position: 256px 224px;
-  }
-}
-.app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 0.3s;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.bun-logo {
-  transform: scale(1.2);
-}
-.bun-logo:hover {
-  filter: drop-shadow(0 0 2em #fbf0dfaa);
-}
-.react-logo {
-  animation: spin 20s linear infinite;
-}
-.react-logo:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-  to {
-    transform: rotate(360deg);
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background font-sans text-ink antialiased;
+    overflow-x: clip;
+  }
+
+  /* Keep anchored sections clear of the sticky navbar. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-magenta);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-blush);
+    color: var(--color-navy);
+  }
 }
-code {
-  background-color: #1a1a1a;
-  padding: 0.2em 0.4em;
-  border-radius: 0.3em;
-  font-family: monospace;
+
+@utility text-gradient {
+  background-image: linear-gradient(100deg, var(--color-plum), var(--color-magenta) 55%, var(--color-coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-.api-tester {
-  margin: 2rem auto 0;
+
+@utility bg-brand {
+  background-image: linear-gradient(135deg, var(--color-purple), var(--color-pink));
+}
+
+@utility bg-brand-deep {
+  background-image: linear-gradient(120deg, #6d2a8c 0%, #a8307c 55%, #c63b62 100%);
+}
+
+@utility container-page {
   width: 100%;
-  max-width: 600px;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
 }
-.endpoint-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #1a1a1a;
-  padding: 0.75rem;
-  border-radius: 12px;
-  font: monospace;
-  border: 2px solid #fbf0df;
-  transition: 0.3s;
-  width: 100%;
-  box-sizing: border-box;
+
+/* Scroll-reveal: elements start slightly lowered and fade in when visible. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
 }
-.endpoint-row:focus-within {
-  border-color: #f3d5a3;
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
-.method {
-  background: #fbf0df;
-  color: #1a1a1a;
-  padding: 0.3rem 0.7rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 0.9em;
-  appearance: none;
-  margin: 0;
-  width: min-content;
-  display: block;
-  flex-shrink: 0;
-  border: none;
-}
-.method option {
-  text-align: left;
-}
-.url-input {
-  width: 100%;
-  flex: 1;
-  background: 0;
-  border: 0;
-  color: #fbf0df;
-  font: 1em monospace;
-  padding: 0.2rem;
-  outline: 0;
-}
-.url-input:focus {
-  color: #fff;
-}
-.url-input::placeholder {
-  color: rgba(251, 240, 223, 0.4);
-}
-.send-button {
-  background: #fbf0df;
-  color: #1a1a1a;
-  border: 0;
-  padding: 0.4rem 1.2rem;
-  border-radius: 8px;
-  font-weight: 700;
-  transition: 0.1s;
-  cursor: var(--bun-cursor);
-}
-.send-button:hover {
-  background: #f3d5a3;
-  transform: translateY(-1px);
-  cursor: pointer;
-}
-.response-area {
-  width: 100%;
-  min-height: 120px;
-  background: #1a1a1a;
-  border: 2px solid #fbf0df;
-  border-radius: 12px;
-  padding: 0.75rem;
-  color: #fbf0df;
-  font: monospace;
-  resize: vertical;
-  box-sizing: border-box;
-}
-.response-area:focus {
-  border-color: #f3d5a3;
-}
-.response-area::placeholder {
-  color: rgba(251, 240, 223, 0.4);
-}
-@media (prefers-reduced-motion) {
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
-  ::before,
-  ::after {
-    animation: none !important;
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Body copy inside legal page sections. */
+.legal-prose {
+  color: var(--color-ink);
+  line-height: 1.75;
+
+  & > * + * {
+    margin-top: 1rem;
+  }
+
+  & ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+
+    & > li + li {
+      margin-top: 0.5rem;
+    }
+
+    & ::marker {
+      color: var(--color-pink);
+    }
+
+    & ul {
+      list-style: circle;
+      margin-top: 0.5rem;
+    }
+  }
+
+  & h3 {
+    padding-top: 0.5rem;
+    color: var(--color-navy);
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  & blockquote {
+    border-left: 3px solid var(--color-pink);
+    border-radius: 0 0.75rem 0.75rem 0;
+    background: color-mix(in srgb, var(--color-lavender) 80%, transparent);
+    padding: 0.75rem 1rem;
+    font-style: italic;
+  }
+
+  & strong {
+    color: var(--color-navy);
+    font-weight: 600;
+  }
+
+  & a {
+    color: var(--color-magenta);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* 3D heart (components/Heart3D.tsx). In the components layer so utilities like `absolute` win. */
+@layer components {
+  .heart-3d {
+    position: relative;
+    aspect-ratio: 1;
+  }
+
+  .heart-3d__glow,
+  .heart-3d__ripple,
+  .heart-3d__beat,
+  .heart-3d__sway,
+  .heart-3d__glint {
+    position: absolute;
+  }
+
+  .heart-3d__glow {
+    inset: 4%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgb(255 112 166 / 0.6), rgb(184 100 195 / 0.25) 60%, transparent);
+    filter: blur(10px);
+    animation: heart-glow 2.4s ease-in-out infinite;
+  }
+
+  .heart-3d__ripple {
+    inset: 16%;
+    border-radius: 50%;
+    border: 1.5px solid rgb(232 108 142 / 0.7);
+    opacity: 0;
+    animation: heart-ripple 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+  }
+
+  .heart-3d__ripple--late {
+    animation-delay: 1.2s;
+  }
+
+  .heart-3d__beat {
+    inset: 0;
+    filter: drop-shadow(0 10px 12px rgb(150 24 96 / 0.35));
+    animation: heart-beat 2.4s ease-in-out infinite;
+  }
+
+  .heart-3d__sway {
+    inset: 0;
+    transform: perspective(420px) rotateY(-14deg) rotateX(6deg);
+    animation: heart-sway 6s ease-in-out infinite;
+  }
+
+  .heart-3d__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* A streak of light, clipped to the heart's shape, that crosses it as it turns. */
+  .heart-3d__glint {
+    inset: 0;
+    background: linear-gradient(110deg, transparent 38%, rgb(255 255 255 / 0.55) 50%, transparent 62%) 130% 0 / 260% 100% no-repeat;
+    -webkit-mask: var(--heart-mask) center / contain no-repeat;
+    mask: var(--heart-mask) center / contain no-repeat;
+    mix-blend-mode: screen;
+    animation: heart-glint 6s ease-in-out infinite;
+  }
+}
+
+@keyframes heart-beat {
+  0%,
+  50%,
+  100% {
+    transform: scale(1);
+  }
+  12% {
+    transform: scale(1.13);
+  }
+  24% {
+    transform: scale(0.97);
+  }
+  36% {
+    transform: scale(1.07);
+  }
+}
+
+@keyframes heart-sway {
+  0%,
+  100% {
+    transform: perspective(420px) rotateY(-14deg) rotateX(6deg);
+  }
+  50% {
+    transform: perspective(420px) rotateY(14deg) rotateX(-4deg);
+  }
+}
+
+@keyframes heart-glint {
+  0%,
+  100% {
+    background-position: 130% 0;
+  }
+  50% {
+    background-position: -30% 0;
+  }
+}
+
+@keyframes heart-glow {
+  0%,
+  50%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+  14% {
+    opacity: 0.95;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes heart-ripple {
+  0% {
+    opacity: 0.75;
+    transform: scale(0.75);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
   }
 }
