@@ -1,23 +1,31 @@
-import { APITester } from "./APITester";
+import { BrowserRouter, Route, Routes } from "react-router";
+import { Layout } from "./components/Layout";
+import { homeSections } from "./config";
 import "./index.css";
-
-import logo from "./logo.svg";
-import reactLogo from "./react.svg";
+import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { RefundPolicy } from "./pages/RefundPolicy";
+import { TermsAndConditions } from "./pages/TermsAndConditions";
 
 export function App() {
   return (
-    <div className="app">
-      <div className="logo-container">
-        <img src={logo} alt="Bun Logo" className="logo bun-logo" />
-        <img src={reactLogo} alt="React Logo" className="logo react-logo" />
-      </div>
-
-      <h1>Bun + React</h1>
-      <p>
-        Edit <code>src/App.tsx</code> and save to test HMR
-      </p>
-      <APITester />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<Home />} />
+          {/* /features, /faq, /download…: the home page, scrolled to that section. */}
+          {homeSections.map((section) => (
+            <Route key={section} path={section} element={<Home />} />
+          ))}
+          {/* Legal pages accept an optional section, e.g. /terms-and-conditions/eligibility. */}
+          <Route path="terms-and-conditions/:section?" element={<TermsAndConditions />} />
+          <Route path="privacy-policy/:section?" element={<PrivacyPolicy />} />
+          <Route path="refund-policy/:section?" element={<RefundPolicy />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

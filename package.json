@@ -1,21 +1,26 @@
 {
-  "name": "bun-react-template",
+  "name": "impress-web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "bun --hot src/index.ts",
-    "build": "bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'",
-    "start": "NODE_ENV=production bun src/index.ts"
+    "build": "bun run build.ts",
+    "start": "NODE_ENV=production bun src/index.ts",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "lucide-react": "^1.52.0",
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "react-router": "^8.4.0"
   },
   "devDependencies": {
+    "@types/bun": "latest",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/bun": "latest"
+    "bun-plugin-tailwind": "^0.1.2",
+    "tailwindcss": "^4.3.3"
   },
   "peerDependencies": {
     "typescript": "^7"
