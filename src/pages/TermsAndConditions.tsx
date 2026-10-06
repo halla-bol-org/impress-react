@@ -821,7 +821,7 @@ export function TermsAndConditions() {
     <LegalLayout
       title="Terms & Conditions"
       metaDescription={`The terms that govern your use of Impress, the self-improvement and learning platform by ${company.legalName}.`}
-      lastUpdated="5 October 2026"
+      lastUpdated="6 October 2026"
       intro={
         <p>
           These Terms are a legal agreement between you and <CompanyName />. Please read them carefully before downloading,
