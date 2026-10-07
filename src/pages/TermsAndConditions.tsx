@@ -11,7 +11,7 @@ const sections: LegalSection[] = [
   {
     id: "introduction",
     title: "Introduction",
-    content: (
+    content:(
       <>
         <p>
           Your acceptance of these Terms and Conditions (“<strong>Terms</strong>”) is a legal agreement between you (“
