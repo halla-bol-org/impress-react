@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import { FAQAccordion, type FAQItem } from "../../components/FAQAccordion";
-import { Reveal } from "../../components/Reveal";
-import { SectionHeading } from "../../components/SectionHeading";
-import { company } from "../../config";
+import { FAQAccordion, type FAQItem } from "@/components/ui/FAQAccordion";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { company } from "@/config";
 
 const faqs: FAQItem[] = [
   {

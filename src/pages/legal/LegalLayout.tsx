@@ -1,9 +1,9 @@
 import { ChevronDown, FileText } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router";
-import { company, isPlaceholder } from "../config";
-import { usePageMeta } from "../hooks/usePageMeta";
-import { GradientBackground } from "./GradientBackground";
+import { company, isPlaceholder } from "@/config";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { GradientBackground } from "@/components/ui/GradientBackground";
 
 export type LegalSection = { id: string; title: string; content: ReactNode };
 

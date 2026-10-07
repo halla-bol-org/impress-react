@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { heartImage } from "../assets";
+import { heartImage } from "@/assets";
 
 /**
  * Glossy 3D heart: a double "heartbeat", a slow 3D sway with a glint of light

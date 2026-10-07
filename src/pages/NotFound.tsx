@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
-import { Button } from "../components/Button";
-import { GradientBackground } from "../components/GradientBackground";
-import { usePageMeta } from "../hooks/usePageMeta";
+import { Button } from "@/components/ui/Button";
+import { GradientBackground } from "@/components/ui/GradientBackground";
+import { usePageMeta } from "@/hooks/usePageMeta";
 
 export function NotFound() {
   usePageMeta("Page not found — Impress", "The page you're looking for doesn't exist.");

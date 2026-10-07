@@ -1,8 +1,8 @@
 import { Menu, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
-import { links, navItems } from "../config";
-import { Button } from "./Button";
+import { links, navItems } from "@/config";
+import { Button } from "@/components/ui/Button";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
 

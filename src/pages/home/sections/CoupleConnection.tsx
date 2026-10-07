@@ -1,6 +1,6 @@
-import type { ImageAsset } from "../../assets";
-import { couple } from "../../assets";
-import { Heart3D } from "../../components/Heart3D";
+import type { ImageAsset } from "@/assets";
+import { couple } from "@/assets";
+import { Heart3D } from "@/components/ui/Heart3D";
 
 /**
  * A young couple on either side of the hero phone, connected by a 3D heart

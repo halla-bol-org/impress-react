@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import { Layout } from "./components/Layout";
+import { Layout } from "./components/layout/Layout";
 import { homeSections } from "./config";
 import "./index.css";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/home/Home";
 import { NotFound } from "./pages/NotFound";
-import { PrivacyPolicy } from "./pages/PrivacyPolicy";
-import { RefundPolicy } from "./pages/RefundPolicy";
-import { TermsAndConditions } from "./pages/TermsAndConditions";
+import { PrivacyPolicy } from "./pages/legal/PrivacyPolicy";
+import { RefundPolicy } from "./pages/legal/RefundPolicy";
+import { TermsAndConditions } from "./pages/legal/TermsAndConditions";
 
 export function App() {
   return (

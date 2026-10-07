@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { legalItems, showSocialLinks, social } from "../config";
+import { legalItems, showSocialLinks, social } from "@/config";
 import { Logo } from "./Logo";
 import { InstagramIcon, LinkedInIcon, YouTubeIcon } from "./SocialIcons";
 

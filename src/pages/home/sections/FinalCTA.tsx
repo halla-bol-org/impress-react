@@ -1,7 +1,7 @@
 import { ArrowRight, Heart, Smartphone } from "lucide-react";
-import { Button } from "../../components/Button";
-import { Reveal } from "../../components/Reveal";
-import { links } from "../../config";
+import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
+import { links } from "@/config";
 
 export function FinalCTA() {
   return (

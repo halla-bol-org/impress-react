@@ -1,6 +1,6 @@
-import { Reveal } from "../../components/Reveal";
-import { SectionHeading } from "../../components/SectionHeading";
-import { TestimonialCard } from "../../components/TestimonialCard";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { TestimonialCard } from "@/components/cards/TestimonialCard";
 
 // Placeholder content — replace with real, consented user testimonials before launch.
 const testimonials = [
