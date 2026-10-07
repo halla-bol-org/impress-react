@@ -8,9 +8,12 @@ import { PrivacyPolicy } from "./pages/legal/PrivacyPolicy";
 import { RefundPolicy } from "./pages/legal/RefundPolicy";
 import { TermsAndConditions } from "./pages/legal/TermsAndConditions";
 
+// Set by build.ts when the site is served from a sub-folder (GitHub Pages); absent in dev.
+const basename = document.querySelector('meta[name="base-path"]')?.getAttribute("content")?.replace(/\/$/, "") || undefined;
+
 export function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
