@@ -14,14 +14,6 @@ bun run typecheck  # TypeScript check
 
 Every route is handled client-side: `/`, the home-page sections (`/explore`, `/features`, `/why-impress`, `/how-it-works`, `/faq`, `/download`), and the legal pages (`/terms-and-conditions`, `/privacy-policy`, `/refund-policy`, each with optional section paths such as `/terms-and-conditions/eligibility`). No links use `#`. The Bun server already falls back to the app for any path. If you deploy `dist/` to a static host, configure it to serve `index.html` for unknown paths so deep links and refreshes work.
 
-## Deploying to GitHub Pages
-
-`.github/workflows/deploy.yml` builds and publishes the site on every push to `main`. One-time setup: in the repo, go to **Settings → Pages → Build and deployment** and set **Source** to **GitHub Actions**.
-
-The site is then served at `https://<owner>.github.io/<repo>/`. The workflow builds with `BASE_PATH=/<repo>/` so assets and routes work from that sub-folder, and `build.ts` writes a `404.html` copy of the app so deep links (`/download`, `/privacy-policy`) survive a refresh. With a custom domain, change `BASE_PATH` in the workflow to `/`.
-
-To check a sub-folder build locally: `BASE_PATH=/impress-react/ bun run build`.
-
 ## Before launch
 
 - **Links and business details** are all in [`src/config.ts`](src/config.ts): store URLs, social links, company legal name, address, support email and jurisdiction. Every page reads from this file.
