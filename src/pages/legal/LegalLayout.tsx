@@ -1,9 +1,9 @@
 import { ChevronDown, FileText } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link, useLocation } from "react-router";
-import { company, isPlaceholder } from "../config";
-import { usePageMeta } from "../hooks/usePageMeta";
-import { GradientBackground } from "./GradientBackground";
+import { isPlaceholder } from "@/config";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { GradientBackground } from "@/components/ui/GradientBackground";
 
 export type LegalSection = { id: string; title: string; content: ReactNode };
 
@@ -12,8 +12,8 @@ type LegalLayoutProps = {
   metaDescription: string;
   intro: ReactNode;
   sections: LegalSection[];
-  /** Defaults to the shared placeholder in config.ts. */
-  lastUpdated?: string;
+  /** Shown under the title, e.g. "6 October 2026". */
+  lastUpdated: string;
 };
 
 /**
@@ -58,7 +58,7 @@ export function LegalLayout({
   metaDescription,
   intro,
   sections,
-  lastUpdated = company.lastUpdated,
+  lastUpdated,
 }: LegalLayoutProps) {
   usePageMeta(`${title} — Impress`, metaDescription);
 

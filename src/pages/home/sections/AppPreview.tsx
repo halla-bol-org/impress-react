@@ -1,8 +1,8 @@
 import { MessageCircle, Shirt, Smile, Sparkles, type LucideIcon } from "lucide-react";
-import { screens } from "../../assets";
-import { PhoneMockup } from "../../components/PhoneMockup";
-import { Reveal } from "../../components/Reveal";
-import { SectionHeading } from "../../components/SectionHeading";
+import { screens } from "@/assets";
+import { PhoneMockup } from "@/components/ui/PhoneMockup";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 type FloatingLabel = { text: string; icon: LucideIcon; position: string; delay: string };
 

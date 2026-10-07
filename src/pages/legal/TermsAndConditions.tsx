@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import { EmailLink, LegalLayout, Placeholder, type LegalSection } from "../components/LegalLayout";
-import { company } from "../config";
+import { EmailLink, LegalLayout, Placeholder, type LegalSection } from "./LegalLayout";
+import { company } from "@/config";
 
 // Shared details come from config.ts; anything still in [brackets] is highlighted on the page.
 const CompanyName = () => <Placeholder>{company.legalName}</Placeholder>;

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
-import { EmailLink, LegalLayout, Placeholder, type LegalSection } from "../components/LegalLayout";
-import { company } from "../config";
+import { EmailLink, LegalLayout, Placeholder, type LegalSection } from "./LegalLayout";
+import { company } from "@/config";
 
 const CompanyName = () => <Placeholder>{company.legalName}</Placeholder>;
 const SupportEmail = () => <EmailLink address={company.email} />;

@@ -1,6 +1,6 @@
-import { BenefitCard } from "../../components/BenefitCard";
-import { Reveal } from "../../components/Reveal";
-import { SectionHeading } from "../../components/SectionHeading";
+import { BenefitCard } from "@/components/cards/BenefitCard";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const benefits = [
   {

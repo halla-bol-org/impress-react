@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { logoImage } from "../assets";
+import { logoImage } from "@/assets";
 
 /** The Impress wordmark, linking home. */
 export function Logo({ className = "h-8" }: { className?: string }) {

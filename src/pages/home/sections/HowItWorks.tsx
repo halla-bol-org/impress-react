@@ -1,7 +1,7 @@
 import { Compass, ListChecks, TrendingUp } from "lucide-react";
-import { Reveal } from "../../components/Reveal";
-import { SectionHeading } from "../../components/SectionHeading";
-import { StepCard } from "../../components/StepCard";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { StepCard } from "@/components/cards/StepCard";
 
 const steps = [
   {

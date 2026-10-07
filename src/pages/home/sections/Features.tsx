@@ -1,8 +1,8 @@
 import { Heart, Scissors, Speech, Sparkles, Trophy, Zap } from "lucide-react";
-import { FeatureCard } from "../../components/FeatureCard";
-import { GradientBackground } from "../../components/GradientBackground";
-import { Reveal } from "../../components/Reveal";
-import { SectionHeading } from "../../components/SectionHeading";
+import { FeatureCard } from "@/components/cards/FeatureCard";
+import { GradientBackground } from "@/components/ui/GradientBackground";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const features = [
   {

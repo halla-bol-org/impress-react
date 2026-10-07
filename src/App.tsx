@@ -1,19 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router";
-import { Layout } from "./components/Layout";
+import { Layout } from "./components/layout/Layout";
 import { homeSections } from "./config";
 import "./index.css";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/home/Home";
 import { NotFound } from "./pages/NotFound";
-import { PrivacyPolicy } from "./pages/PrivacyPolicy";
-import { RefundPolicy } from "./pages/RefundPolicy";
-import { TermsAndConditions } from "./pages/TermsAndConditions";
-
-// Set by build.ts when the site is served from a sub-folder (e.g. GitHub Pages); absent in dev.
-const basename = document.querySelector('meta[name="base-path"]')?.getAttribute("content")?.replace(/\/$/, "") || undefined;
+import { PrivacyPolicy } from "./pages/legal/PrivacyPolicy";
+import { RefundPolicy } from "./pages/legal/RefundPolicy";
+import { TermsAndConditions } from "./pages/legal/TermsAndConditions";
 
 export function App() {
   return (
-    <BrowserRouter basename={basename}>
+    <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />

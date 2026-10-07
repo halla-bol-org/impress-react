@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router";
-import { links, navItems } from "../config";
-import { Button } from "./Button";
+import { links, navItems } from "@/config";
+import { Button } from "@/components/ui/Button";
 
 type MobileMenuProps = {
   id: string;

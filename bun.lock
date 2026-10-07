@@ -16,8 +16,6 @@
         "@types/react-dom": "^19",
         "bun-plugin-tailwind": "^0.1.2",
         "tailwindcss": "^4.3.3",
-      },
-      "peerDependencies": {
         "typescript": "^7",
       },
     },

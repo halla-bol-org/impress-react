@@ -1,9 +1,9 @@
 import { CalendarCheck, LayoutGrid, MessageCircle, MessagesSquare, Sprout, TrendingUp, Zap, type LucideIcon } from "lucide-react";
 import type { CSSProperties, ReactNode } from "react";
-import { screens } from "../../assets";
-import { PhoneMockup } from "../../components/PhoneMockup";
-import { Reveal } from "../../components/Reveal";
-import { SectionHeading } from "../../components/SectionHeading";
+import { screens } from "@/assets";
+import { PhoneMockup } from "@/components/ui/PhoneMockup";
+import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const highlights = [
   { icon: LayoutGrid, title: "A feed built around you", text: "The topics you choose shape the videos you see every day." },

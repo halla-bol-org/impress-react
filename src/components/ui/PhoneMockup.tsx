@@ -1,4 +1,4 @@
-import type { Screenshot } from "../assets";
+import type { Screenshot } from "@/assets";
 
 type Size = "sm" | "md" | "lg";
 

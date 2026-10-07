@@ -1,9 +1,9 @@
 import { ArrowRight, Sparkles } from "lucide-react";
-import { screens } from "../../assets";
-import { Button } from "../../components/Button";
-import { GradientBackground } from "../../components/GradientBackground";
-import { PhoneMockup } from "../../components/PhoneMockup";
-import { links } from "../../config";
+import { screens } from "@/assets";
+import { Button } from "@/components/ui/Button";
+import { GradientBackground } from "@/components/ui/GradientBackground";
+import { PhoneMockup } from "@/components/ui/PhoneMockup";
+import { links } from "@/config";
 import { CoupleConnection } from "./CoupleConnection";
 
 export function Hero() {
