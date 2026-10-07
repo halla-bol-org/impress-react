@@ -32,7 +32,6 @@ export const company = {
   privacyEmail: "info@shuru.co.in",
   dataProtectionOfficer: "Harsh Chhabra",
   grievanceOfficer: "[Grievance Officer Name]",
-  lastUpdated: "[Last Updated Date]",
 } as const;
 
 /** True for values still written as a [placeholder]. */
