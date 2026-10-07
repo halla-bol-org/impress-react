@@ -1,4 +1,4 @@
-# Impress — marketing website
+# Impress —
 
 Static, mobile-first landing site for the Impress app, built with React, React Router, Tailwind CSS v4 and Lucide icons, bundled and served by [Bun](https://bun.com).
 
